@@ -5,6 +5,7 @@ import { ChatMode } from '@/components/modes/ChatMode';
 import { TTSMode } from '@/components/modes/TTSMode';
 import { ImageMode } from '@/components/modes/ImageMode';
 import { VideoMode } from '@/components/modes/VideoMode';
+import ShaderBackground from '@/components/ShaderBackground';
 
 const Index = () => {
   const [currentMode, setCurrentMode] = useState<DisplayMode>('chat');
@@ -41,22 +42,24 @@ const Index = () => {
   const config = getModeConfig();
 
   return (
-    <div className="h-screen bg-background p-6 flex flex-col gap-4 overflow-hidden">
-      {/* 主舞台区域 */}
-      <DisplayStage
-        title={config.title}
-        subtitle={config.subtitle}
-        className="flex-1 min-h-0"
-      >
-        {config.component}
-      </DisplayStage>
+    <ShaderBackground>
+      <div className="h-screen p-6 flex flex-col gap-4 overflow-hidden">
+        {/* 主舞台区域 */}
+        <DisplayStage
+          title={config.title}
+          subtitle={config.subtitle}
+          className="flex-1 min-h-0"
+        >
+          {config.component}
+        </DisplayStage>
 
-      {/* 底部控制面板 */}
-      <ControlPanel
-        currentMode={currentMode}
-        onModeChange={setCurrentMode}
-      />
-    </div>
+        {/* 底部控制面板 */}
+        <ControlPanel
+          currentMode={currentMode}
+          onModeChange={setCurrentMode}
+        />
+      </div>
+    </ShaderBackground>
   );
 };
 

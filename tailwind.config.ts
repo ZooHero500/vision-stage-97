@@ -52,36 +52,10 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// 大屏专用颜色
-				stage: {
-					bg: 'hsl(var(--stage-bg))',
-					border: 'hsl(var(--stage-border))'
-				},
-				glow: {
-					primary: 'hsl(var(--glow-primary))',
-					accent: 'hsl(var(--glow-accent))'
-				},
-				panel: {
-					bg: 'hsl(var(--panel-bg))',
-					hover: 'hsl(var(--panel-hover))'
-				}
-			},
-			backgroundImage: {
-				'gradient-primary': 'var(--gradient-primary)',
-				'gradient-stage': 'var(--gradient-stage)',
-				'gradient-panel': 'var(--gradient-panel)'
-			},
-			boxShadow: {
-				'glow': 'var(--shadow-glow)',
-				'stage': 'var(--shadow-stage)',
-				'panel': 'var(--shadow-panel)'
 			},
 			animation: {
-				'fade-in': 'fade-in 0.5s ease-out',
-				'scale-in': 'scale-in 0.3s ease-out',
-				'slide-up': 'slide-up 0.4s ease-out',
-				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
-				'float': 'float 3s ease-in-out infinite'
+				'fade-in': 'fade-in 0.3s ease-out',
+				'slide-up': 'slide-up 0.3s ease-out'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -98,29 +72,16 @@ export default {
 					to: { height: '0' }
 				},
 				'fade-in': {
-					'0%': { opacity: '0', transform: 'translateY(20px)' },
-					'100%': { opacity: '1', transform: 'translateY(0)' }
-				},
-				'scale-in': {
-					'0%': { opacity: '0', transform: 'scale(0.9)' },
-					'100%': { opacity: '1', transform: 'scale(1)' }
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' }
 				},
 				'slide-up': {
-					'0%': { opacity: '0', transform: 'translateY(50px)' },
+					'0%': { opacity: '0', transform: 'translateY(20px)' },
 					'100%': { opacity: '1', transform: 'translateY(0)' }
-				},
-				'glow-pulse': {
-					'0%, 100%': { boxShadow: '0 0 20px hsl(var(--glow-primary) / 0.3)' },
-					'50%': { boxShadow: '0 0 40px hsl(var(--glow-primary) / 0.6)' }
-				},
-				'float': {
-					'0%, 100%': { transform: 'translateY(0px)' },
-					'50%': { transform: 'translateY(-10px)' }
 				}
 			},
 			transitionTimingFunction: {
-				'smooth': 'var(--transition-smooth)',
-				'bounce': 'var(--transition-bounce)'
+				'default': 'cubic-bezier(0.4, 0, 0.2, 1)'
 			}
 		}
 	},

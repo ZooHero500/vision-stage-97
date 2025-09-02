@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* 大屏展示深色主题 */
+    /* 简洁深色主题 */
     --background: 220 27% 8%;
     --foreground: 210 40% 98%;
 
@@ -27,7 +27,7 @@ All colors MUST be HSL.
     --muted: 220 27% 14%;
     --muted-foreground: 215 20% 65%;
 
-    --accent: 180 100% 50%;
+    --accent: 200 100% 50%;
     --accent-foreground: 220 27% 8%;
 
     --destructive: 0 84% 60%;
@@ -37,29 +37,7 @@ All colors MUST be HSL.
     --input: 220 27% 16%;
     --ring: 200 100% 50%;
 
-    --radius: 1rem;
-
-    /* 大屏专用颜色 */
-    --stage-bg: 220 27% 10%;
-    --stage-border: 200 100% 50%;
-    --glow-primary: 200 100% 50%;
-    --glow-accent: 180 100% 50%;
-    --panel-bg: 220 27% 14%;
-    --panel-hover: 220 27% 18%;
-
-    /* 渐变 */
-    --gradient-primary: linear-gradient(135deg, hsl(200 100% 50% / 0.2), hsl(180 100% 50% / 0.1));
-    --gradient-stage: linear-gradient(180deg, hsl(220 27% 12%), hsl(220 27% 8%));
-    --gradient-panel: linear-gradient(90deg, hsl(220 27% 14%), hsl(220 27% 16%));
-
-    /* 阴影 */
-    --shadow-glow: 0 0 50px hsl(200 100% 50% / 0.3);
-    --shadow-stage: 0 10px 40px hsl(220 27% 4% / 0.8);
-    --shadow-panel: 0 4px 20px hsl(220 27% 4% / 0.6);
-
-    /* 动画 */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --radius: 0.5rem;
   }
 
   .dark {

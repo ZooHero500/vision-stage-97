@@ -52,36 +52,22 @@ const modes: ModeConfig[] = [
 
 export const ControlPanel = ({ currentMode, onModeChange, children }: ControlPanelProps) => {
   return (
-    <div className="bg-gradient-panel rounded-2xl border border-border/50 shadow-panel backdrop-blur-sm p-8 animate-slide-up">
+    <div className="bg-card rounded-lg border border-border p-6">
       {/* 模式选择器 */}
-      <div className="grid grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-4 gap-4 mb-6">
         {modes.map((mode) => (
           <Button
             key={mode.id}
-            variant="ghost"
-            className={cn(
-              "h-auto p-6 flex flex-col items-center gap-3 rounded-xl border-2 transition-all duration-300",
-              "hover:scale-105 hover:shadow-glow/20",
-              currentMode === mode.id
-                ? "border-primary bg-primary/10 text-primary shadow-glow animate-glow-pulse"
-                : "border-border/30 hover:border-primary/50 hover:bg-primary/5"
-            )}
+            variant={currentMode === mode.id ? "default" : "outline"}
+            className="h-auto p-4 flex flex-col items-center gap-2"
             onClick={() => onModeChange(mode.id)}
           >
-            <div className={cn(
-              "transition-colors duration-300",
-              currentMode === mode.id ? "text-primary" : "text-muted-foreground"
-            )}>
-              {mode.icon}
-            </div>
+            {mode.icon}
             <div className="text-center">
-              <div className={cn(
-                "text-lg font-semibold mb-1",
-                currentMode === mode.id ? "text-primary" : "text-foreground"
-              )}>
+              <div className="font-medium">
                 {mode.label}
               </div>
-              <div className="text-sm text-muted-foreground">
+              <div className="text-xs text-muted-foreground">
                 {mode.description}
               </div>
             </div>
@@ -91,7 +77,7 @@ export const ControlPanel = ({ currentMode, onModeChange, children }: ControlPan
       
       {/* 动态控制区域 */}
       {children && (
-        <div className="border-t border-border/30 pt-6">
+        <div className="border-t border-border pt-4">
           {children}
         </div>
       )}

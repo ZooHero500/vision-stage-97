@@ -52,33 +52,45 @@ const modes: ModeConfig[] = [
 
 export const ControlPanel = ({ currentMode, onModeChange, children }: ControlPanelProps) => {
   return (
-    <div className="bg-card/50 backdrop-blur-sm rounded-xl border border-border/50 shadow-raycast p-4">
-      {/* 模式选择器 */}
-      <div className="grid grid-cols-4 gap-3">
-        {modes.map((mode) => (
-          <Button
-            key={mode.id}
-            variant={currentMode === mode.id ? "default" : "ghost"}
-            className={cn(
-              "h-16 p-3 flex flex-col items-center gap-1.5 transition-all duration-200",
-              currentMode === mode.id 
-                ? "bg-primary/10 text-primary border border-primary/20 shadow-sm" 
-                : "hover:bg-muted/50 text-muted-foreground hover:text-foreground"
-            )}
-            onClick={() => onModeChange(mode.id)}
-          >
-            <div className="opacity-80">{mode.icon}</div>
-            <div className="text-xs font-medium leading-none">
-              {mode.label}
-            </div>
-          </Button>
-        ))}
+    <div className="relative">
+      {/* 背景光晕 */}
+      <div className="absolute -inset-4 bg-gradient-to-r from-red-600/20 via-orange-500/20 to-red-600/20 blur-xl rounded-full opacity-40" />
+      
+      {/* 悬浮式模式选择器 */}
+      <div className="relative z-10 flex justify-center">
+        <div className="flex gap-6 bg-black/30 backdrop-blur-xl rounded-full p-2 border border-red-500/20">
+          {modes.map((mode) => (
+            <Button
+              key={mode.id}
+              variant="ghost"
+              className={cn(
+                "h-16 w-16 rounded-full flex flex-col items-center justify-center gap-1 transition-all duration-300 group relative overflow-hidden",
+                currentMode === mode.id 
+                  ? "bg-gradient-to-r from-red-600 to-orange-500 text-white shadow-lg shadow-red-500/50" 
+                  : "hover:bg-red-500/20 text-white/70 hover:text-white border-2 border-transparent hover:border-red-500/30"
+              )}
+              onClick={() => onModeChange(mode.id)}
+            >
+              {currentMode === mode.id && (
+                <div className="absolute inset-0 bg-gradient-to-r from-red-400/20 to-orange-400/20 blur-sm rounded-full animate-pulse" />
+              )}
+              <div className="relative z-10 scale-75 group-hover:scale-90 transition-transform">
+                {mode.icon}
+              </div>
+              <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity bg-black/80 px-2 py-1 rounded backdrop-blur">
+                {mode.label}
+              </div>
+            </Button>
+          ))}
+        </div>
       </div>
       
       {/* 动态控制区域 */}
       {children && (
-        <div className="border-t border-border/50 pt-4 mt-4">
-          {children}
+        <div className="mt-6 flex justify-center">
+          <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-4 border border-orange-500/20">
+            {children}
+          </div>
         </div>
       )}
     </div>

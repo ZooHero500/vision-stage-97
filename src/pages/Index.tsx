@@ -44,6 +44,15 @@ const Index = () => {
   return (
     <ShaderBackground>
       <div className="h-screen p-6 flex flex-col gap-4 overflow-hidden">
+        {/* 顶部Logo区域 */}
+        <div className="flex justify-center py-4">
+          <img 
+            src="/lovable-uploads/aa93550f-c575-4a2f-a1a6-06d4ddeda60c.png" 
+            alt="云瀚互动 Intimate Cloud" 
+            className="h-12 object-contain"
+          />
+        </div>
+
         {/* 主舞台区域 */}
         <DisplayStage
           title={config.title}

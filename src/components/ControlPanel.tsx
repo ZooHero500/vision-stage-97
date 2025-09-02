@@ -52,40 +52,35 @@ const modes: ModeConfig[] = [
 
 export const ControlPanel = ({ currentMode, onModeChange, children }: ControlPanelProps) => {
   return (
-    <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl p-4 relative">
-      {/* 玻璃拟态渐变光效 */}
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-transparent to-blue-500/10 rounded-2xl pointer-events-none" />
-      
-      <div className="relative z-10">
-        {/* 模式选择器 */}
-        <div className="grid grid-cols-4 gap-3">
-          {modes.map((mode) => (
-            <Button
-              key={mode.id}
-              variant={currentMode === mode.id ? "default" : "ghost"}
-              className={cn(
-                "h-16 p-3 flex flex-col items-center gap-1.5 transition-all duration-300 backdrop-blur-sm",
-                currentMode === mode.id 
-                  ? "bg-primary/20 text-primary border border-primary/30 shadow-lg shadow-primary/20" 
-                  : "hover:bg-white/10 text-muted-foreground hover:text-foreground border border-transparent hover:border-white/20"
-              )}
-              onClick={() => onModeChange(mode.id)}
-            >
-              <div className="opacity-80">{mode.icon}</div>
-              <div className="text-xs font-medium leading-none">
-                {mode.label}
-              </div>
-            </Button>
-          ))}
-        </div>
-        
-        {/* 动态控制区域 */}
-        {children && (
-          <div className="border-t border-white/10 pt-4 mt-4">
-            {children}
-          </div>
-        )}
+    <div className="bg-card/50 backdrop-blur-sm rounded-xl border border-border/50 shadow-raycast p-4">
+      {/* 模式选择器 */}
+      <div className="grid grid-cols-4 gap-3">
+        {modes.map((mode) => (
+          <Button
+            key={mode.id}
+            variant={currentMode === mode.id ? "default" : "ghost"}
+            className={cn(
+              "h-16 p-3 flex flex-col items-center gap-1.5 transition-all duration-200",
+              currentMode === mode.id 
+                ? "bg-primary/10 text-primary border border-primary/20 shadow-sm" 
+                : "hover:bg-muted/50 text-muted-foreground hover:text-foreground"
+            )}
+            onClick={() => onModeChange(mode.id)}
+          >
+            <div className="opacity-80">{mode.icon}</div>
+            <div className="text-xs font-medium leading-none">
+              {mode.label}
+            </div>
+          </Button>
+        ))}
       </div>
+      
+      {/* 动态控制区域 */}
+      {children && (
+        <div className="border-t border-border/50 pt-4 mt-4">
+          {children}
+        </div>
+      )}
     </div>
   );
 };

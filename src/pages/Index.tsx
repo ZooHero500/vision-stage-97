@@ -41,12 +41,12 @@ const Index = () => {
   const config = getModeConfig();
 
   return (
-    <div className="min-h-screen bg-background p-8 flex flex-col gap-8">
+    <div className="h-screen bg-background p-6 flex flex-col gap-4 overflow-hidden">
       {/* 主舞台区域 */}
       <DisplayStage
         title={config.title}
         subtitle={config.subtitle}
-        className="flex-1"
+        className="flex-1 min-h-0"
       >
         {config.component}
       </DisplayStage>

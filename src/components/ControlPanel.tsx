@@ -52,24 +52,24 @@ const modes: ModeConfig[] = [
 
 export const ControlPanel = ({ currentMode, onModeChange, children }: ControlPanelProps) => {
   return (
-    <div className="bg-card rounded-lg border border-border p-6">
+    <div className="bg-card/50 backdrop-blur-sm rounded-xl border border-border/50 shadow-raycast p-4">
       {/* 模式选择器 */}
-      <div className="grid grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-4 gap-3">
         {modes.map((mode) => (
           <Button
             key={mode.id}
-            variant={currentMode === mode.id ? "default" : "outline"}
-            className="h-auto p-4 flex flex-col items-center gap-2"
+            variant={currentMode === mode.id ? "default" : "ghost"}
+            className={cn(
+              "h-16 p-3 flex flex-col items-center gap-1.5 transition-all duration-200",
+              currentMode === mode.id 
+                ? "bg-primary/10 text-primary border border-primary/20 shadow-sm" 
+                : "hover:bg-muted/50 text-muted-foreground hover:text-foreground"
+            )}
             onClick={() => onModeChange(mode.id)}
           >
-            {mode.icon}
-            <div className="text-center">
-              <div className="font-medium">
-                {mode.label}
-              </div>
-              <div className="text-xs text-muted-foreground">
-                {mode.description}
-              </div>
+            <div className="opacity-80">{mode.icon}</div>
+            <div className="text-xs font-medium leading-none">
+              {mode.label}
             </div>
           </Button>
         ))}
@@ -77,7 +77,7 @@ export const ControlPanel = ({ currentMode, onModeChange, children }: ControlPan
       
       {/* 动态控制区域 */}
       {children && (
-        <div className="border-t border-border pt-4">
+        <div className="border-t border-border/50 pt-4 mt-4">
           {children}
         </div>
       )}

@@ -53,6 +53,10 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 			},
+			boxShadow: {
+				'raycast': '0 8px 32px rgba(0, 0, 0, 0.32), 0 1px 2px rgba(0, 0, 0, 0.24)',
+				'raycast-sm': '0 2px 8px rgba(0, 0, 0, 0.16), 0 1px 2px rgba(0, 0, 0, 0.08)',
+			},
 			animation: {
 				'fade-in': 'fade-in 0.3s ease-out',
 				'slide-up': 'slide-up 0.3s ease-out'
